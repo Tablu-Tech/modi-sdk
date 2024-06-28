@@ -66,7 +66,7 @@ afterEvaluate {
 
                 groupId = "com.github.inaciosacataria"
                 artifactId = "modi_sdk"
-                version = "1.0"
+                version = "1.0.3"
             }
         }
 
