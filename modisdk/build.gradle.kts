@@ -66,13 +66,7 @@ afterEvaluate {
 
                 groupId = "com.github.inaciosacataria"
                 artifactId = "biometrylibrary"
-                version = "1.0.4"
-            }
-        }
-
-        repositories {
-            maven {
-                url = uri("file://${buildDir}/repo")
+                version = "1.0.5"
             }
         }
     }
