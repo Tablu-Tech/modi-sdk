@@ -64,7 +64,7 @@ afterEvaluate {
             create("release", MavenPublication::class.java) {
                 from(components["release"])
 
-                groupId = "com.tablutech.modisdk"
+                groupId = "com.github.inaciosacataria"
                 artifactId = "modi_sdk"
                 version = "1.0"
             }
