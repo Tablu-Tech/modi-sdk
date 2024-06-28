@@ -13,10 +13,10 @@ pluginManagement {
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
+   // repositoriesMode = RepositoriesMode.PREFER_PROJECT
+   repositories {
         google()
         mavenCentral()
-
         maven ("https://maven.regulaforensics.com/RegulaDocumentReader")
         maven ("https://jitpack.io")
     }

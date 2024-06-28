@@ -5,6 +5,13 @@ plugins {
     id("maven-publish")
 }
 
+//repositories {
+//    google()
+//    mavenCentral()
+//    maven ("https://maven.regulaforensics.com/RegulaDocumentReader")
+//    maven ("https://jitpack.io")
+//}
+
 android {
     namespace = "com.tablutech.modisdk"
     compileSdk = 34
@@ -33,6 +40,9 @@ android {
         jvmTarget = "1.8"
     }
 }
+
+
+
 
 dependencies {
 
