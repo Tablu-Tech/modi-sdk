@@ -65,8 +65,8 @@ afterEvaluate {
                 from(components["release"])
 
                 groupId = "com.github.inaciosacataria"
-                artifactId = "modi_sdk"
-                version = "1.0.3"
+                artifactId = "biometrylibrary"
+                version = "1.0.4"
             }
         }
 
