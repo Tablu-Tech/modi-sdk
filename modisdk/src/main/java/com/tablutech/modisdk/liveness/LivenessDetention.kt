@@ -21,12 +21,12 @@ object LivenessDetetion {
         val uiConfiguration = UiConfiguration.Builder()
 
 
-            .setFont(CustomizationFont.ONBOARDING_SCREEN_TITLE_LABEL, R.font.urbanist_medium)
+            .setFont(CustomizationFont.ONBOARDING_SCREEN_TITLE_LABEL, R.font.montserrat_medium)
             .setColor(CustomizationColor.ONBOARDING_SCREEN_TITLE_LABEL_TEXT, R.color.green)
             .setColor(CustomizationColor.ONBOARDING_SCREEN_START_BUTTON_BACKGROUND, R.color.green)
 
             .setColor(CustomizationColor.CAMERA_SCREEN_FRONT_HINT_LABEL_TEXT, R.color.black)
-            .setFont(CustomizationFont.CAMERA_SCREEN_HINT_LABEL, R.font.urbanist_light)
+            .setFont(CustomizationFont.CAMERA_SCREEN_HINT_LABEL, R.font.montserrat_light)
 
 
             .setColor(CustomizationColor.CAMERA_SCREEN_STROKE_ACTIVE, R.color.greendark)
@@ -37,7 +37,7 @@ object LivenessDetetion {
             .setColor(CustomizationColor.PROCESSING_SCREEN_BACKGROUND, R.color.green)
             .setColor(CustomizationColor.PROCESSING_SCREEN_PROGRESS, R.color.green)
             .setColor(CustomizationColor.PROCESSING_SCREEN_TITLE, R.color.black)
-            .setFont(CustomizationFont.PROCESSING_SCREEN, R.font.urbanist_medium)
+            .setFont(CustomizationFont.PROCESSING_SCREEN, R.font.montserrat_medium)
 
             .build()
 
@@ -67,13 +67,12 @@ object LivenessDetetion {
         val uiConfiguration = UiConfiguration.Builder()
 
 
-            .setFont(CustomizationFont.ONBOARDING_SCREEN_TITLE_LABEL, R.font.urbanist_medium)
+            .setFont(CustomizationFont.ONBOARDING_SCREEN_TITLE_LABEL, R.font.montserrat_medium)
             .setColor(CustomizationColor.ONBOARDING_SCREEN_TITLE_LABEL_TEXT, R.color.green)
             .setColor(CustomizationColor.ONBOARDING_SCREEN_START_BUTTON_BACKGROUND, R.color.green)
 
             .setColor(CustomizationColor.CAMERA_SCREEN_FRONT_HINT_LABEL_TEXT, R.color.black)
-            .setFont(CustomizationFont.CAMERA_SCREEN_HINT_LABEL, R.font.urbanist_light)
-
+            .setFont(CustomizationFont.CAMERA_SCREEN_HINT_LABEL, R.font.montserrat_light)
 
             .setColor(CustomizationColor.CAMERA_SCREEN_STROKE_ACTIVE, R.color.greendark)
             .setColor(CustomizationColor.CAMERA_SCREEN_STROKE_NORMAL, R.color.green)
@@ -83,7 +82,7 @@ object LivenessDetetion {
             .setColor(CustomizationColor.PROCESSING_SCREEN_BACKGROUND, R.color.green)
             .setColor(CustomizationColor.PROCESSING_SCREEN_PROGRESS, R.color.green)
             .setColor(CustomizationColor.PROCESSING_SCREEN_TITLE, R.color.black)
-            .setFont(CustomizationFont.PROCESSING_SCREEN, R.font.urbanist_medium)
+            .setFont(CustomizationFont.PROCESSING_SCREEN, R.font.montserrat_medium)
 
             .build()
 

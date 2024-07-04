@@ -19,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.WindowCompat
 import com.regula.documentreader.api.DocumentReader
 import com.regula.documentreader.api.completions.IDocumentReaderPrepareCompletion
 import com.regula.documentreader.api.errors.DocumentReaderException
@@ -27,6 +28,7 @@ import com.regula.facesdk.FaceSDK
 import com.regula.facesdk.configuration.InitializationConfiguration
 import com.regula.facesdk.configuration.LivenessConfiguration
 import com.regula.facesdk.exception.InitException
+import com.tablutech.modisdklibray.screens.Onboarding
 import com.tablutech.modisdklibray.ui.theme.ModiSdkLibrayTheme
 import java.io.File
 
@@ -44,6 +46,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        WindowCompat.setDecorFitsSystemWindows(window, true)
 
 
         val licInput = resources.openRawResource(R.raw.regula)
@@ -93,12 +96,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ModiSdkLibrayTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+              Navigation()
             }
         }
     }
