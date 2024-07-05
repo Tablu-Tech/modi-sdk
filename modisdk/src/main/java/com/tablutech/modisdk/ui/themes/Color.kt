@@ -15,3 +15,8 @@ val indicatorOutlineColor = Color(0xFFd9d9d9)
 val iconBg = Color(0xFFFBF6F6)
 val GreenModi = Color(0xFF6bae44)
 val BlueDark = Color(0xFF73b84b)
+
+
+val textInfoColor = Color(0xFF373737)
+val LabelColor = Color(0xFF383838)
+val cardColor = Color(0xFFfbfbfb)

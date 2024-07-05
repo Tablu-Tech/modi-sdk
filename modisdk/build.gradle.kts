@@ -67,6 +67,7 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
     implementation ("com.google.accompanist:accompanist-permissions:0.35.1-alpha")
     implementation ("com.prabhatpandey:otp-compose:1.0.1")
+    implementation ("io.insert-koin:koin-android:3.3.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

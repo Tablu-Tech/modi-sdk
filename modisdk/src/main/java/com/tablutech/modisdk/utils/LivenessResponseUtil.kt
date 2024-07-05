@@ -8,7 +8,7 @@ object LivenessResponseUtil {
     fun response(context: Context?, livenessResponse: LivenessResponse) {
         if (livenessResponse.exception != null)
             Toast.makeText(context, "Error: " + livenessResponse.exception!!.message, Toast.LENGTH_SHORT).show()
-        else
-            Toast.makeText(context, "Liveness status: " + livenessResponse.liveness.name, Toast.LENGTH_SHORT).show()
+       // else
+       //     Toast.makeText(context, "Liveness status: " + livenessResponse.liveness.name, Toast.LENGTH_SHORT).show()
     }
 }
