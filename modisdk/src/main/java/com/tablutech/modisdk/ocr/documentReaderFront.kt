@@ -17,7 +17,7 @@ object OCRReader {
 
     val documentData = mutableMapOf<String, String>()
 
-    fun documentReaderFront(context: Context, onResult: (Bitmap) -> Unit) {
+    fun documentReaderFront(context: Context, onResult: (Bitmap) -> Unit) : MutableMap<String, String> {
 
         DocumentReader.Instance().functionality().edit().setShowSkipNextPageButton(true).apply()
         DocumentReader.Instance().customization().edit()
@@ -59,10 +59,12 @@ object OCRReader {
                     onResult(results!!.getGraphicFieldImageByType(eGraphicFieldType.GF_DOCUMENT_IMAGE)!!)
                 }
             })
+
+        return documentData;
     }
 
 
-    fun documentReaderBack(context: Context, onResult: (Bitmap) -> Unit) {
+    fun documentReaderBack(context: Context, onResult: (Bitmap) -> Unit) : MutableMap<String, String> {
 
         val document = DocumentReader.Instance()
 
@@ -97,5 +99,6 @@ object OCRReader {
                 onResult(results!!.getGraphicFieldImageByType(eGraphicFieldType.GF_DOCUMENT_IMAGE)!!)
             }
         }
+        return documentData;
     }
 }
