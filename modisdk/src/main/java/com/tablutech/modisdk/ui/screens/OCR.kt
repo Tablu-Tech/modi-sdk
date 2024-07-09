@@ -1,4 +1,4 @@
-package com.tablutech.modisdklibray.screens
+package com.tablutech.modisdk.ui.screens
 
 import android.graphics.Bitmap
 import android.os.Handler
@@ -8,10 +8,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
@@ -25,15 +23,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.tablutech.modisdk.facematch.FaceMacth.matchFaces
+import com.tablutech.modisdk.R
 import com.tablutech.modisdk.ocr.OCRReader.documentReaderBack
 import com.tablutech.modisdk.ocr.OCRReader.documentReaderFront
 import com.tablutech.modisdk.utils.Constants.documentTypeID
-import com.tablutech.modisdklibray.R
-import com.tablutech.modisdklibray.components.BottomBar
-import com.tablutech.modisdklibray.components.CardKYCComponents
-import com.tablutech.modisdklibray.components.ProcessingDialog
-import com.tablutech.modisdklibray.components.TopAppBarCustom
+import com.tablutech.modisdk.ui.components.BottomBar
+import com.tablutech.modisdk.ui.components.CardKYCComponents
+import com.tablutech.modisdk.ui.components.ProcessingDialog
+import com.tablutech.modisdk.ui.components.TopAppBarCustom
 
 @Preview
 @Composable
@@ -75,7 +72,8 @@ fun OCR (navController: NavController? = null, onImageCaptured: (Bitmap) -> Unit
 //                    }
 //                }
             }
-        )}) { innerPadding ->
+        )
+        }) { innerPadding ->
 
 //        if(match.value<=75.0 && match.value>0.000000000000000000000000000  ){
 //            ValidationErrorDialog(errorMessage = "Nivel de similiarida muito baixa") {
@@ -115,7 +113,7 @@ fun OCR (navController: NavController? = null, onImageCaptured: (Bitmap) -> Unit
                             horizontalArrangement = Arrangement.SpaceEvenly,
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            CardKYCComponents(text = "Frente", com.tablutech.modisdk.R.drawable.front_disable,  com.tablutech.modisdk.R.drawable.front_filled, verifiedDocumentFront.value, true){
+                            CardKYCComponents(text = "Frente", R.drawable.front_disable,  R.drawable.front_filled, verifiedDocumentFront.value, true){
 
                                 documentReaderFront(context = navController?.context!!){
                                     if(it!=null) verifiedDocumentFront.value = true else verifiedDocumentFront.value = false;
@@ -124,7 +122,8 @@ fun OCR (navController: NavController? = null, onImageCaptured: (Bitmap) -> Unit
                             }
 
                             if(documentTypeID == "Bilhete de identidade")
-                                CardKYCComponents(text = "Verso", com.tablutech.modisdk.R.drawable.back_disable,com.tablutech.modisdk.R.drawable.back_filled, verifiedDocumentBack.value, true){
+                                CardKYCComponents(text = "Verso", R.drawable.back_disable,
+                                    R.drawable.back_filled, verifiedDocumentBack.value, true){
                                     documentReaderBack(context = navController?.context!!){
                                         if(it!=null) verifiedDocumentBack.value = true else verifiedDocumentBack.value = false;
                                     }

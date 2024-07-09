@@ -1,4 +1,4 @@
-package com.tablutech.modisdklibray.screens
+package com.tablutech.modisdk.ui.screens
 
 import android.graphics.Bitmap
 import androidx.compose.foundation.Image
@@ -22,7 +22,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,21 +33,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.times
 import androidx.navigation.NavController
 import com.tablutech.modi_agentapp.data.repository.SubscriberRepositoryImpl
-import com.tablutech.modi_agentapp.domain.repository.SubscriberRepository
 import com.tablutech.modisdk.R
 import com.tablutech.modisdk.data.model.Subscritor
-import com.tablutech.modisdk.liveness.LivenessDetetion
 import com.tablutech.modisdk.ui.themes.GreenModi
 import com.tablutech.modisdk.ui.themes.textInfoColor
 import com.tablutech.modisdk.utils.Constants
-import com.tablutech.modisdklibray.components.BottomBar
-import com.tablutech.modisdklibray.components.BottomBarCancel
-import com.tablutech.modisdklibray.components.InfoCards
-import com.tablutech.modisdklibray.components.ProcessingDialog
-import com.tablutech.modisdklibray.components.TextHeaders
-import com.tablutech.modisdklibray.components.TopAppBarCustom
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.tablutech.modisdk.ui.components.BottomBarCancel
+import com.tablutech.modisdk.ui.components.TopAppBarCustom
 
 @Preview
 @Composable

@@ -1,7 +1,6 @@
-package com.tablutech.modisdklibray.screens
+package com.tablutech.modisdk.ui.screens
 
 import android.graphics.Bitmap
-import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -9,27 +8,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.content.pm.ShortcutInfoCompat
 import androidx.navigation.NavController
-import com.tablutech.modi_agentapp.data.repository.SubscriberRepositoryImpl
-import com.tablutech.modisdklibray.components.BottomBar
-import com.tablutech.modisdklibray.components.InfoCards
-import com.tablutech.modisdklibray.components.TextHeaders
-import com.tablutech.modisdklibray.components.TopAppBarCustom
-import okhttp3.Headers
+import com.tablutech.modisdk.ui.components.BottomBar
+import com.tablutech.modisdk.ui.components.InfoCards
+import com.tablutech.modisdk.ui.components.TextHeaders
+import com.tablutech.modisdk.ui.components.TopAppBarCustom
 import com.tablutech.modisdk.*
 import com.tablutech.modisdk.liveness.LivenessDetetion
 import com.tablutech.modisdk.utils.Constants
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import java.io.File
 
 @Preview
 @Composable

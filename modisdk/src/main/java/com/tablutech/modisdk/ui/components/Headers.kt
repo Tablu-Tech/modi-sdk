@@ -1,4 +1,4 @@
-package com.tablutech.modisdklibray.components
+package com.tablutech.modisdk.ui.components
 
 
 import android.content.Context

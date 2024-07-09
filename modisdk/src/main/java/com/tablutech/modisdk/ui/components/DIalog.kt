@@ -1,4 +1,4 @@
-package com.tablutech.modisdklibray.components
+package com.tablutech.modisdk.ui.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn

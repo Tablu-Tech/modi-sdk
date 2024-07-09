@@ -7,9 +7,6 @@ import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.tablutech.modi_agentapp.data.remote.SubscriberApiService
-import com.tablutech.modi_agentapp.data.remote.ApiModel.response.OtpRequestValidation
-import com.tablutech.modi_agentapp.data.remote.ApiModel.response.OtpValidationResponse
-import com.tablutech.modi_agentapp.domain.repository.SubscriberRepository
 import com.tablutech.modisdk.data.model.Subscritor
 
 import com.tablutech.modisdk.utils.Constants

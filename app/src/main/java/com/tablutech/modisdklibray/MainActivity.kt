@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
 import com.regula.facesdk.FaceSDK
 import com.tablutech.modisdk.ModiSDK
+import com.tablutech.modisdk.ui.OnboardingSDK
 import com.tablutech.modisdklibray.ui.theme.ModiSdkLibrayTheme
 import java.io.File
 
@@ -40,7 +41,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ModiSdkLibrayTheme {
-              Navigation()
+                OnboardingSDK()
             }
         }
     }

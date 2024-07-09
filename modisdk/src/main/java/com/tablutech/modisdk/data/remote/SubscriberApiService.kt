@@ -8,9 +8,6 @@ import android.util.Log
 import androidx.navigation.NavController
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
-
-import com.tablutech.modi_agentapp.data.remote.ApiModel.response.OtpRequestValidation
-import com.tablutech.modi_agentapp.data.remote.ApiModel.response.OtpValidationResponse
 import com.tablutech.modisdk.data.model.Subscritor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -62,19 +59,4 @@ interface SubscriberApiService{
         @Part back_side: MultipartBody.Part,
         @Part selfie: MultipartBody.Part
     ): Response<Subscritor>
-
-
-    @POST("confirmOTP")
-    suspend fun validateOtp(
-        @Body otpValidate: OtpRequestValidation
-    ): Response<OtpValidationResponse>
-
-
-    @Multipart
-    @POST("confirmOTP")
-    suspend fun validateOtp(
-        @Part("otp_code") otpCode: String,
-        @Part("contact") contact : String
-    ): Response<OtpValidationResponse>
-
 }

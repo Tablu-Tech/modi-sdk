@@ -1,4 +1,4 @@
-package com.tablutech.modisdklibray.screens
+package com.tablutech.modisdk.ui.screens
 
 import android.graphics.Bitmap
 import androidx.compose.foundation.layout.Arrangement
@@ -18,16 +18,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.tablutech.modisdk.R
-import com.tablutech.modisdk.liveness.LivenessDetetion
-import com.tablutech.modisdklibray.components.BottomBar
-import com.tablutech.modisdklibray.components.InfoCards
-import com.tablutech.modisdklibray.components.TextHeaders
-import com.tablutech.modisdklibray.components.TopAppBarCustom
+import com.tablutech.modisdk.ui.components.BottomBar
+import com.tablutech.modisdk.ui.components.TextHeaders
+import com.tablutech.modisdk.ui.components.TopAppBarCustom
 
 
 
