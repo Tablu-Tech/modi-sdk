@@ -11,6 +11,7 @@ import com.regula.documentreader.api.enums.DocReaderAction
 import com.regula.documentreader.api.enums.Scenario
 import com.regula.documentreader.api.enums.eGraphicFieldType
 import com.tablutech.modisdk.R
+import com.tablutech.modisdk.utils.Constants
 
 
 object OCRReader {
@@ -56,7 +57,8 @@ object OCRReader {
                     documentData.entries.forEach { entry ->
                         Log.d("Resultado", "Field : ${entry.key.toUpperCase()} :,  ${entry.value}")
                     }
-                    onResult(results!!.getGraphicFieldImageByType(eGraphicFieldType.GF_DOCUMENT_IMAGE)!!)
+                    Constants.documentFrontBitmap = results!!.getGraphicFieldImageByType(eGraphicFieldType.GF_DOCUMENT_IMAGE)
+                    onResult(results!!.getGraphicFieldImageByType(eGraphicFieldType.GF_PORTRAIT)!!)
                 }
             })
 
@@ -96,6 +98,7 @@ object OCRReader {
                 documentData.entries.forEach { entry ->
                     Log.d("Resultado", "Field : ${entry.key} :  ${entry.value}")
                 }
+                Constants.documentBackBitmap = results!!.getGraphicFieldImageByType(eGraphicFieldType.GF_DOCUMENT_IMAGE)
                 onResult(results!!.getGraphicFieldImageByType(eGraphicFieldType.GF_DOCUMENT_IMAGE)!!)
             }
         }

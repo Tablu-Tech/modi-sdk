@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.tablutech.modisdk.R
+import com.tablutech.modisdk.facematch.FaceMacth.matchFaces
 import com.tablutech.modisdk.ocr.OCRReader.documentReaderBack
 import com.tablutech.modisdk.ocr.OCRReader.documentReaderFront
 import com.tablutech.modisdk.utils.Constants.documentTypeID
@@ -31,6 +32,8 @@ import com.tablutech.modisdk.ui.components.BottomBar
 import com.tablutech.modisdk.ui.components.CardKYCComponents
 import com.tablutech.modisdk.ui.components.ProcessingDialog
 import com.tablutech.modisdk.ui.components.TopAppBarCustom
+import com.tablutech.modisdk.ui.components.ValidationDialog
+import com.tablutech.modisdk.utils.Constants
 
 @Preview
 @Composable
@@ -39,7 +42,7 @@ fun OCR (navController: NavController? = null, onImageCaptured: (Bitmap) -> Unit
     val rememberState = rememberSaveable { mutableStateOf(false) }
     val verifiedDocumentFront = rememberSaveable { mutableStateOf(false) }
     val verifiedDocumentBack = rememberSaveable { mutableStateOf(false) }
-    val verifiedFace = rememberSaveable { mutableStateOf(false) }
+
     val imageCaptured = rememberSaveable {  mutableStateOf<Bitmap?>(null)  }
     var handler = Handler()
     var match = rememberSaveable {mutableStateOf(0.0)}
@@ -52,34 +55,30 @@ fun OCR (navController: NavController? = null, onImageCaptured: (Bitmap) -> Unit
         bottomBar = { BottomBar(
             navigationBack = {},
             navigation = {
+                if(verifiedDocumentFront.value && verifiedDocumentBack.value){
 
-                navController!!.navigate(Screen.EndPage.route)
-
-//                if(verifiedDocumentFront.value && verifiedDocumentBack.value && verifiedFace.value){
-//                    sharedViewModel.setProcessing(true)
-//
-//                    if (sharedViewModel.frontBitmap.value!! !=null && sharedViewModel.selfieBitmap.value!! != null)
-//                        matchFaces(sharedViewModel.frontBitmap.value!!, sharedViewModel.selfieBitmap.value!!) {
-//                            match.value = it
-//                            if (it >= Constants.similarity) {
-//                                sharedViewModel.updateSimilarity(similarity = it)
-//                                sharedViewModel.setProcessing(false)
-//                                navController!!.navigate(Screen.Step3firstOption.route)
-//                            } else {
-//
-//                            }
-//                        } else {
-//                    }
-//                }
+                    if (Constants.faceBitmap!=null && Constants.documentProtaitBitmap != null)
+                        matchFaces(Constants.faceBitmap!!, Constants.documentProtaitBitmap!!) {
+                            match.value = it
+                            if (it >= Constants.similarity) {
+                                Log.d("SIMILARITY", "GOOD: ${match.value}")
+                                dialogState.value = true
+                            } else {
+                                dialogState.value = true
+                            }
+                        } else {
+                            Log.d("SIMILARITY", "Else: ${match.value}")
+                    }
+                }else{
+                    Log.d("SIMILARITY", "Else: verifiedDocumentFront: ${verifiedDocumentFront.value} && verifiedDocumentBack :${verifiedDocumentBack.value}" )
+                }
             }
         )
         }) { innerPadding ->
 
-//        if(match.value<=75.0 && match.value>0.000000000000000000000000000  ){
-//            ValidationErrorDialog(errorMessage = "Nivel de similiarida muito baixa") {
-//                dialogState.value=false
-//            }
-//        }
+        if(dialogState.value == true && match.value>0.000000000000000000000000000  ){
+            ValidationDialog(documentProtatitBitmap = Constants.documentProtaitBitmap!!, faceBitmap =  Constants.faceBitmap!!, percentagem = match.value.toString(), navController = navController )
+        }
 
         Box(
             modifier = Modifier
@@ -117,6 +116,7 @@ fun OCR (navController: NavController? = null, onImageCaptured: (Bitmap) -> Unit
 
                                 documentReaderFront(context = navController?.context!!){
                                     if(it!=null) verifiedDocumentFront.value = true else verifiedDocumentFront.value = false;
+                                    Constants.documentProtaitBitmap = it
                                 }
 
                             }

@@ -78,6 +78,7 @@ fun ProcessingPage (navController: NavController? = null, onImageCaptured: (Bitm
                     Spacer(modifier = Modifier.width(12.dp))
                     Text(text = "Avaliando a prova de vida")
                 }
+
                 Spacer(modifier = Modifier.height(32.dp))
                 Row(modifier = Modifier
                     .fillMaxWidth()
@@ -118,7 +119,7 @@ fun ProcessingPage (navController: NavController? = null, onImageCaptured: (Bitm
 
                     if(subscritor!=null){
                         Constants.subscritor = subscritor
-                        navController.navigate(Screen.EndPage.route)
+                        navController.navigate(Screen.OCR.route)
                     }else{
                         navController.navigate(Screen.OCR.route)
                     }
