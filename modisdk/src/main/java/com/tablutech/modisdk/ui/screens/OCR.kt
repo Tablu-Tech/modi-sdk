@@ -92,8 +92,9 @@ fun OCR(
                 documentProtatitBitmap = Constants.documentProtaitBitmap!!,
                 faceBitmap = Constants.faceBitmap!!,
                 percentagem = match.value.toString(),
-                { onOnboardingCompleted(navController!!, OCRReader.documentData, Constants.documentProtaitBitmap!!, Constants.faceBitmap!!, Constants.documentFrontBitmap!!, Constants.documentBackBitmap!!) }
-            )
+            ){
+                 onOnboardingCompleted(navController!!, OCRReader.documentData, Constants.documentProtaitBitmap!!, Constants.faceBitmap!!, Constants.documentFrontBitmap!!, Constants.documentBackBitmap!!)
+            }
         }
 
         Box(
