@@ -17,7 +17,9 @@ Add it in your root build.gradle at the end of repositories:
 		}
 	}
 
-Step 2. Add the dependency
+Step 2. Add the dependency 
+
+version  [![](https://jitpack.io/v/Tablu-Tech/modi-sdk.svg)](https://jitpack.io/#Tablu-Tech/modi-sdk)
 
 	dependencies {
 	        implementation 'com.github.Tablu-Tech:modi-sdk:Tag'
