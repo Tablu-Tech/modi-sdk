@@ -41,7 +41,6 @@ object FaceMacth {
             val formattedOutput = String.format("%.2f", similarity!! * 100)
             val percentageDouble = formattedOutput.toDouble()
             Log.d("Similarity", "Similarity: $percentageDouble %")
-
             onResult(percentageDouble)
         }
     }

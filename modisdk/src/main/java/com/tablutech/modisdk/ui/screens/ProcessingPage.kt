@@ -111,7 +111,6 @@ fun ProcessingPage (navController: NavController? = null, onImageCaptured: (Bitm
                     Text(text = "Esse processo pode demorar alguns\nminutos" , color = textInfoColor,  modifier = Modifier.graphicsLayer(alpha = 0.3f), textAlign = TextAlign.Center)
                 }
 
-
                 LaunchedEffect(Unit) {
                     subscritor =
                         SubscriberRepositoryImpl().searchSubscriber(navController!!.context, Constants.faceBitmap!!)
