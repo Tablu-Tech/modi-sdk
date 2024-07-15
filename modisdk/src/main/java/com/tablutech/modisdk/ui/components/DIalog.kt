@@ -133,7 +133,7 @@ fun ValidationDialog(
     documentProtatitBitmap: Bitmap? = null,
     faceBitmap: Bitmap? =null,
     percentagem : String = "72",
-    navController: NavController? = null
+    onClick: () -> Unit = {}
 ) {
 
     var showDialog by remember { mutableStateOf(true) }
@@ -196,9 +196,9 @@ fun ValidationDialog(
 
 
                     Row(horizontalArrangement = Arrangement.Center, modifier =   Modifier.padding(start = 24.dp, end = 24.dp, bottom = 16.dp)) {
-                        ButtonFilled(onClick = {
-                            navController!!.navigate(Screen.EndPage.route)
-                        }, text = "Feito", modifier = Modifier
+                        ButtonFilled(onClick =
+                           onClick
+                        , text = "Feito", modifier = Modifier
                             .fillMaxWidth()
                             .height(45.dp)
 

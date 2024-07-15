@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.tablutech.modisdk.R
 import com.tablutech.modisdk.facematch.FaceMacth.matchFaces
+import com.tablutech.modisdk.ocr.OCRReader
 import com.tablutech.modisdk.ocr.OCRReader.documentReaderBack
 import com.tablutech.modisdk.ocr.OCRReader.documentReaderFront
 import com.tablutech.modisdk.utils.Constants.documentTypeID
@@ -91,7 +92,7 @@ fun OCR(
                 documentProtatitBitmap = Constants.documentProtaitBitmap!!,
                 faceBitmap = Constants.faceBitmap!!,
                 percentagem = match.value.toString(),
-                navController = navController
+                { onOnboardingCompleted(navController!!, OCRReader.documentData, Constants.documentProtaitBitmap!!, Constants.faceBitmap!!, Constants.documentFrontBitmap!!, Constants.documentBackBitmap!!) }
             )
         }
 
