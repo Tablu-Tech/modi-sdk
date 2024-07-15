@@ -37,47 +37,62 @@ import com.tablutech.modisdk.utils.Constants
 
 @Preview
 @Composable
-fun OCR (navController: NavController? = null, onImageCaptured: (Bitmap) -> Unit = {} ) {
+fun OCR(
+    navController: NavController? = null,
+    onOnboardingCompleted: (navController: NavController, documentData: MutableMap<String, String>, protaitBitmap: Bitmap, faceBitmap: Bitmap, documentFrontBitmap: Bitmap, documentBackBitmap: Bitmap) -> Unit = {
+        navController, documentData, protaitBitmap, faceBitmap, documentFrontBitmap, documentBackBitmap ->
+    },
+    onImageCaptured: (Bitmap) -> Unit = {}
+) {
 
     val rememberState = rememberSaveable { mutableStateOf(false) }
     val verifiedDocumentFront = rememberSaveable { mutableStateOf(false) }
     val verifiedDocumentBack = rememberSaveable { mutableStateOf(false) }
 
-    val imageCaptured = rememberSaveable {  mutableStateOf<Bitmap?>(null)  }
+    val imageCaptured = rememberSaveable { mutableStateOf<Bitmap?>(null) }
     var handler = Handler()
-    var match = rememberSaveable {mutableStateOf(0.0)}
-    var dialogState = rememberSaveable {mutableStateOf(false)}
-    val isProcessing  = false
+    var match = rememberSaveable { mutableStateOf(0.0) }
+    var dialogState = rememberSaveable { mutableStateOf(false) }
+    val isProcessing = false
 
 
     Scaffold(
-        topBar = { TopAppBarCustom( label = "Captura de documentos") },
-        bottomBar = { BottomBar(
-            navigationBack = {},
-            navigation = {
-                if(verifiedDocumentFront.value && verifiedDocumentBack.value){
+        topBar = { TopAppBarCustom(label = "Captura de documentos") },
+        bottomBar = {
+            BottomBar(
+                navigationBack = {},
+                navigation = {
+                    if (verifiedDocumentFront.value && verifiedDocumentBack.value) {
 
-                    if (Constants.faceBitmap!=null && Constants.documentProtaitBitmap != null)
-                        matchFaces(Constants.faceBitmap!!, Constants.documentProtaitBitmap!!) {
-                            match.value = it
-                            if (it >= Constants.similarity) {
-                                Log.d("SIMILARITY", "GOOD: ${match.value}")
-                                dialogState.value = true
+                        if (Constants.faceBitmap != null && Constants.documentProtaitBitmap != null)
+                            matchFaces(Constants.faceBitmap!!, Constants.documentProtaitBitmap!!) {
+                                match.value = it
+                                if (it >= Constants.similarity) {
+                                    Log.d("SIMILARITY", "GOOD: ${match.value}")
+                                    dialogState.value = true
+                                } else {
+                                    dialogState.value = true
+                                }
                             } else {
-                                dialogState.value = true
-                            }
-                        } else {
                             Log.d("SIMILARITY", "Else: ${match.value}")
+                        }
+                    } else {
+                        Log.d(
+                            "SIMILARITY",
+                            "Else: verifiedDocumentFront: ${verifiedDocumentFront.value} && verifiedDocumentBack :${verifiedDocumentBack.value}"
+                        )
                     }
-                }else{
-                    Log.d("SIMILARITY", "Else: verifiedDocumentFront: ${verifiedDocumentFront.value} && verifiedDocumentBack :${verifiedDocumentBack.value}" )
                 }
-            }
-        )
+            )
         }) { innerPadding ->
 
-        if(dialogState.value == true && match.value>0.000000000000000000000000000  ){
-            ValidationDialog(documentProtatitBitmap = Constants.documentProtaitBitmap!!, faceBitmap =  Constants.faceBitmap!!, percentagem = match.value.toString(), navController = navController )
+        if (dialogState.value == true && match.value > 0.000000000000000000000000000) {
+            ValidationDialog(
+                documentProtatitBitmap = Constants.documentProtaitBitmap!!,
+                faceBitmap = Constants.faceBitmap!!,
+                percentagem = match.value.toString(),
+                navController = navController
+            )
         }
 
         Box(
@@ -103,36 +118,46 @@ fun OCR (navController: NavController? = null, onImageCaptured: (Bitmap) -> Unit
                         .padding(top = 32.dp, start = 0.dp)
                         .weight(1f)
                 ) {
-                    Column (
+                    Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
-                    ){
+                    ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceEvenly,
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            CardKYCComponents(text = "Frente", R.drawable.front_disable,  R.drawable.front_filled, verifiedDocumentFront.value, true){
+                            CardKYCComponents(
+                                text = "Frente",
+                                R.drawable.front_disable,
+                                R.drawable.front_filled,
+                                verifiedDocumentFront.value,
+                                true
+                            ) {
 
-                                documentReaderFront(context = navController?.context!!){
-                                    if(it!=null) verifiedDocumentFront.value = true else verifiedDocumentFront.value = false;
+                                documentReaderFront(context = navController?.context!!) {
+                                    if (it != null) verifiedDocumentFront.value =
+                                        true else verifiedDocumentFront.value = false;
                                     Constants.documentProtaitBitmap = it
                                 }
 
                             }
 
-                            if(documentTypeID == "Bilhete de identidade")
-                                CardKYCComponents(text = "Verso", R.drawable.back_disable,
-                                    R.drawable.back_filled, verifiedDocumentBack.value, true){
-                                    documentReaderBack(context = navController?.context!!){
-                                        if(it!=null) verifiedDocumentBack.value = true else verifiedDocumentBack.value = false;
+                            if (documentTypeID == "Bilhete de identidade")
+                                CardKYCComponents(
+                                    text = "Verso", R.drawable.back_disable,
+                                    R.drawable.back_filled, verifiedDocumentBack.value, true
+                                ) {
+                                    documentReaderBack(context = navController?.context!!) {
+                                        if (it != null) verifiedDocumentBack.value =
+                                            true else verifiedDocumentBack.value = false;
                                     }
                                 }
                         }
 
 
 
-                        if (imageCaptured.value!=null){
+                        if (imageCaptured.value != null) {
                             Log.d("IMAGEG", "Step2: ${imageCaptured.value}")
                         }
                     }

@@ -1,6 +1,8 @@
 package com.tablutech.modisdk.ui
 
+import android.graphics.Bitmap
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -14,14 +16,9 @@ import com.tablutech.modisdk.ui.screens.Screen
 
 @Composable
 fun OnboardingSDK(
-//    loginViewModel: LoginViewModel,
-//    sharedViewModel: SharedViewModel,
-//    starScreen: String =  Screen.SplashScreen.route,
-//    requestPermissions: () -> Unit,
+    onOnboardingCompleted: (navController: NavController ,documentData: MutableMap<String, String>, protaitBitmap: Bitmap, faceBitmap: Bitmap, documentFrontBitmap: Bitmap, documentBackBitmap: Bitmap) -> Unit = {navController,  documentData, protaitBitmap, faceBitmap, documentFrontBitmap, documentBackBitmap -> }
 ) {
-
     val navController = rememberNavController()
-
 
     NavHost(navController = navController, startDestination = Screen.Onboarding.route) {
         composable(route = Screen.Onboarding.route) {
@@ -36,7 +33,7 @@ fun OnboardingSDK(
             DocumentChoose(navController = navController)
         }
         composable(route = Screen.OCR.route) {
-            OCR(navController = navController)
+            OCR(navController = navController, onOnboardingCompleted = onOnboardingCompleted)
         }
 
         composable(route = Screen.EndPage.route) {
