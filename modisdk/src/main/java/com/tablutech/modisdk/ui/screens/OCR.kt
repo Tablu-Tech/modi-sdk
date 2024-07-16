@@ -40,7 +40,7 @@ import com.tablutech.modisdk.utils.Constants
 @Composable
 fun OCR(
     navController: NavController? = null,
-    onOnboardingCompleted: (navController: NavController, documentData: MutableMap<String, String>, protaitBitmap: Bitmap, faceBitmap: Bitmap, documentFrontBitmap: Bitmap, documentBackBitmap: Bitmap) -> Unit = {
+    onOnboardingCompleted: (navController: NavController?, documentData: MutableMap<String, String>?, protaitBitmap: Bitmap?, faceBitmap: Bitmap?, documentFrontBitmap: Bitmap?, documentBackBitmap: Bitmap? ) -> Unit = {
         navController, documentData, protaitBitmap, faceBitmap, documentFrontBitmap, documentBackBitmap ->
     },
     onImageCaptured: (Bitmap) -> Unit = {}
@@ -95,7 +95,7 @@ fun OCR(
                 faceBitmap = Constants.faceBitmap!!,
                 percentagem = match.value.toString(),
             ){
-                 onOnboardingCompleted(navController!!, OCRReader.documentData, Constants.documentProtaitBitmap!!, Constants.faceBitmap!!, Constants.documentFrontBitmap!!, Constants.documentBackBitmap!!)
+                 onOnboardingCompleted(navController, OCRReader.documentData, Constants.documentProtaitBitmap, Constants.faceBitmap, Constants.documentFrontBitmap, Constants.documentBackBitmap)
             }
         }
 
