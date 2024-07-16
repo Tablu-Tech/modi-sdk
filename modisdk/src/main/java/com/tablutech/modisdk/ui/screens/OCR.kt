@@ -65,7 +65,7 @@ fun OCR(
                     navController!!.popBackStack()
                 },
                 navigation = {
-                    if (verifiedDocumentFront.value && verifiedDocumentBack.value) {
+                    if ((verifiedDocumentFront.value && verifiedDocumentBack.value) || (verifiedDocumentFront.value && documentTypeID.equals("Bilhete de identidade",true))) {
 
                         if (Constants.faceBitmap != null && Constants.documentProtaitBitmap != null)
                             matchFaces(Constants.faceBitmap!!, Constants.documentProtaitBitmap!!) {
