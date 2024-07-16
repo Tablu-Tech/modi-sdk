@@ -16,7 +16,7 @@ import com.tablutech.modisdk.ui.screens.Screen
 
 @Composable
 fun OnboardingSDK(
-    onOnboardingCompleted: (navController: NavController ,documentData: MutableMap<String, String>, protaitBitmap: Bitmap?, faceBitmap: Bitmap?, documentFrontBitmap: Bitmap?, documentBackBitmap: Bitmap?) -> Unit = {navController,  documentData, protaitBitmap, faceBitmap, documentFrontBitmap, documentBackBitmap -> }
+    onOnboardingCompleted: (navController: NavController? ,documentData: MutableMap<String, String>?, protaitBitmap: Bitmap?, faceBitmap: Bitmap?, documentFrontBitmap: Bitmap?, documentBackBitmap: Bitmap?) -> Unit = {navController,  documentData, protaitBitmap, faceBitmap, documentFrontBitmap, documentBackBitmap -> }
 ) {
     val navController = rememberNavController()
 
