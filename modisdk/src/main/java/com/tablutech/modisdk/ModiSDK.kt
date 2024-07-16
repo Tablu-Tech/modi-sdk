@@ -22,7 +22,7 @@ object ModiSDK {
         licInput.read(license)
 
         DocumentReader.Instance()
-            .runAutoUpdate(context, "Full", object : IDocumentReaderPrepareCompletion {
+            .prepareDatabase(context, "Full", object : IDocumentReaderPrepareCompletion {
                 override fun onPrepareCompleted(p0: Boolean, p1: DocumentReaderException?) {
                     Log.d("REGULA", "Database prepared : $p0")
                 }
