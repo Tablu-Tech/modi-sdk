@@ -52,7 +52,7 @@ object ModiSDK {
             context, DocReaderConfig(license)
         ) { success, error_initializeReader ->
             if (success) {
-                Log.d("REGULA", "initialization was successful")
+                Log.d("REGULA", "Database initialization was successful")
             } else {
                 Log.d("REGULAREGULA", "initialization was ${error_initializeReader!!.message}")
             }
