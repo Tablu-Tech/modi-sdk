@@ -51,7 +51,7 @@ fun ProcessingPage (navController: NavController? = null, onImageCaptured: (Bitm
         topBar = { TopAppBarCustom() },
         bottomBar = {
             BottomBarCancel(navigationBack = {
-                navController!!.navigate(Screen.Onboarding.route)
+                navController!!.popBackStack()
             }, navigation = {
             })
         },
@@ -118,9 +118,9 @@ fun ProcessingPage (navController: NavController? = null, onImageCaptured: (Bitm
 
                     if(subscritor!=null){
                         Constants.subscritor = subscritor
-                        navController.navigate(Screen.OCR.route)
+                        navController.navigate(Screen.DocumentChoose.route)
                     }else{
-                        navController.navigate(Screen.OCR.route)
+                        navController.navigate(Screen.DocumentChoose.route)
                     }
                 }
             }

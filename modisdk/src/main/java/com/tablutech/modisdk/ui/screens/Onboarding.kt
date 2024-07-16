@@ -29,7 +29,9 @@ fun Onboarding(navController: NavController? = null, onImageCaptured: (Bitmap) -
     Scaffold(
         topBar = { TopAppBarCustom() },
         bottomBar = {
-            BottomBar(navigationBack = {}, navigation = {
+            BottomBar(navigationBack = {
+                navController!!.popBackStack()
+            }, navigation = {
                 LivenessDetetion.passive(context = navController?.context!!) {
                     onImageCaptured(it)
                     Constants.faceBitmap = it

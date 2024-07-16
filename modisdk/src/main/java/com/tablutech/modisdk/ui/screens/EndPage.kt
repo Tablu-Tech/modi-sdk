@@ -30,7 +30,9 @@ fun EndPage(navController: NavController? = null, onImageCaptured: (Bitmap) -> U
     Scaffold(
         topBar = { },
         bottomBar = {
-            BottomBar(navigationBack = {}, navigation = {
+            BottomBar(navigationBack = {
+                navController!!.popBackStack()
+            }, navigation = {
                 LivenessDetetion.passive(context = navController?.context!!) {
                     onImageCaptured(it)
                     navController.navigate(Screen.DocumentChoose.route)

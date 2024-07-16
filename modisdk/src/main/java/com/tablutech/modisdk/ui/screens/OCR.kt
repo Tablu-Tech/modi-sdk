@@ -61,7 +61,9 @@ fun OCR(
         topBar = { TopAppBarCustom(label = "Captura de documentos") },
         bottomBar = {
             BottomBar(
-                navigationBack = {},
+                navigationBack = {
+                    navController!!.popBackStack()
+                },
                 navigation = {
                     if (verifiedDocumentFront.value && verifiedDocumentBack.value) {
 

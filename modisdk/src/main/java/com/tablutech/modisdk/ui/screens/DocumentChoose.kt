@@ -24,19 +24,21 @@ import androidx.navigation.NavController
 import com.tablutech.modisdk.ui.components.BottomBar
 import com.tablutech.modisdk.ui.components.TextHeaders
 import com.tablutech.modisdk.ui.components.TopAppBarCustom
-
+import com.tablutech.modisdk.utils.Constants
 
 
 @Preview
 @Composable
-fun DocumentChoose (navController: NavController? = null, onImageCaptured: (Bitmap) -> Unit = {} ) {
+fun DocumentChoose(navController: NavController? = null, onImageCaptured: (Bitmap) -> Unit = {}) {
 
-    var selectedOption = rememberSaveable { mutableStateOf("Bilhete de identidade") }
+    var selectedDocumentOption = rememberSaveable { mutableStateOf("Bilhete de identidade") }
     Scaffold(
         topBar = { TopAppBarCustom() },
         bottomBar = {
-            BottomBar(navigationBack = {}, navigation = {
-               navController!!.navigate(Screen.OCR.route)
+            BottomBar(navigationBack = {
+                navController!!.popBackStack()
+            }, navigation = {
+                navController!!.navigate(Screen.OCR.route)
             })
         },
     ) { innerPadding ->
@@ -45,8 +47,11 @@ fun DocumentChoose (navController: NavController? = null, onImageCaptured: (Bitm
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-        ){
-            Column (Modifier.padding(start = 24.dp, end = 24.dp), horizontalAlignment = Alignment.Start){
+        ) {
+            Column(
+                Modifier.padding(start = 24.dp, end = 24.dp),
+                horizontalAlignment = Alignment.Start
+            ) {
                 TextHeaders()
                 Spacer(modifier = Modifier.height(32.dp))
 
@@ -77,8 +82,11 @@ fun DocumentChoose (navController: NavController? = null, onImageCaptured: (Bitm
                         horizontalArrangement = Arrangement.Start
                     ) {
                         RadioButton(
-                            selected = selectedOption.value == "Bilhete de identidade",
-                            onClick = { selectedOption.value = "Bilhete de identidade" })
+                            selected = selectedDocumentOption.value == "Bilhete de identidade",
+                            onClick = {
+                                selectedDocumentOption.value = "Bilhete de identidade"
+                                Constants.documentTypeID = "Bilhete de identidade"
+                            }, enabled = true)
 
                         Text(text = "Bilhete de identidade")
                     };
@@ -91,11 +99,14 @@ fun DocumentChoose (navController: NavController? = null, onImageCaptured: (Bitm
                         horizontalArrangement = Arrangement.Start
                     ) {
                         RadioButton(
-                            selected = selectedOption.value == "Passaporte",
-                            onClick = { selectedOption.value = "Passaporte" }, enabled = false
+                            selected = selectedDocumentOption.value == "Carta de condução",
+                            onClick = {
+                                selectedDocumentOption.value = "Carta de condução"
+                                Constants.documentTypeID = "Carta de condução"
+                            },
                         )
 
-                        Text(text = "Passaporte")
+                        Text(text = "Carta de condução")
                     };
 
                     Row(
@@ -106,12 +117,35 @@ fun DocumentChoose (navController: NavController? = null, onImageCaptured: (Bitm
                         horizontalArrangement = Arrangement.Start
                     ) {
                         RadioButton(
-                            selected = selectedOption.value == "Carta de condução",
-                            onClick = { selectedOption.value = "Carta de condução" }, enabled = false
+                            selected = selectedDocumentOption.value == "Cartão de eleitor",
+                            onClick = {
+                                selectedDocumentOption.value = "Cartão de eleitor"
+                                Constants.documentTypeID = "Cartão de eleitor"
+                            },
                         )
 
-                        Text(text = "Carta de condução")
+                        Text(text = "Cartão de eleitor")
                     };
+
+                    Row(
+                        modifier = Modifier
+                            .height(44.dp)
+                            .fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Start
+                    ) {
+                        RadioButton(
+                            selected = selectedDocumentOption.value == "Passaporte",
+                            onClick = {
+                                selectedDocumentOption.value = "Passaporte"
+                                Constants.documentTypeID = "Passaporte"
+                            },
+                        )
+
+                        Text(text = "Passaporte")
+                    };
+
+
                 }
             }
         }
