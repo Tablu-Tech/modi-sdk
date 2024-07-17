@@ -35,6 +35,7 @@ import androidx.navigation.NavController
 import com.tablutech.modi_agentapp.data.repository.SubscriberRepositoryImpl
 import com.tablutech.modisdk.R
 import com.tablutech.modisdk.data.model.Subscritor
+import com.tablutech.modisdk.ocr.OCRReader
 import com.tablutech.modisdk.ui.themes.GreenModi
 import com.tablutech.modisdk.ui.themes.textInfoColor
 import com.tablutech.modisdk.utils.Constants
@@ -43,7 +44,10 @@ import com.tablutech.modisdk.ui.components.TopAppBarCustom
 
 @Preview
 @Composable
-fun ProcessingPage (navController: NavController? = null, onImageCaptured: (Bitmap) -> Unit = {} ) {
+fun ProcessingPage (navController: NavController? = null, onImageCaptured: (Bitmap) -> Unit = {},
+                    onOnboardingCompleted: (navController: NavController?, documentData: MutableMap<String, String>?, protaitBitmap: Bitmap?, faceBitmap: Bitmap?, documentFrontBitmap: Bitmap?, documentBackBitmap: Bitmap?, subscriber: Subscritor? ) -> Unit = {
+                        navController, documentData, protaitBitmap, faceBitmap, documentFrontBitmap, documentBackBitmap, subscriber ->
+                    } ) {
 
     var subscritor by remember { mutableStateOf<Subscritor?>(null) }
 
@@ -118,7 +122,7 @@ fun ProcessingPage (navController: NavController? = null, onImageCaptured: (Bitm
 
                     if(subscritor!=null){
                         Constants.subscritor = subscritor
-                        navController.navigate(Screen.DocumentChoose.route)
+                        onOnboardingCompleted(navController, OCRReader.documentData, Constants.documentProtaitBitmap, Constants.faceBitmap, Constants.documentFrontBitmap, Constants.documentBackBitmap, subscritor)
                     }else{
                         navController.navigate(Screen.DocumentChoose.route)
                     }

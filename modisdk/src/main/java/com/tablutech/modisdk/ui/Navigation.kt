@@ -6,6 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.tablutech.modisdk.data.model.Subscritor
 import com.tablutech.modisdk.ui.screens.DocumentChoose
 import com.tablutech.modisdk.ui.screens.EndPage
 import com.tablutech.modisdk.ui.screens.OCR
@@ -16,7 +17,7 @@ import com.tablutech.modisdk.ui.screens.Screen
 
 @Composable
 fun OnboardingSDK(
-    onOnboardingCompleted: (navController: NavController? ,documentData: MutableMap<String, String>?, protaitBitmap: Bitmap?, faceBitmap: Bitmap?, documentFrontBitmap: Bitmap?, documentBackBitmap: Bitmap?) -> Unit = {navController,  documentData, protaitBitmap, faceBitmap, documentFrontBitmap, documentBackBitmap -> }
+    onOnboardingCompleted: (navController: NavController? ,documentData: MutableMap<String, String>?, protaitBitmap: Bitmap?, faceBitmap: Bitmap?, documentFrontBitmap: Bitmap?, documentBackBitmap: Bitmap?, subscriber : Subscritor?) -> Unit = {navController,  documentData, protaitBitmap, faceBitmap, documentFrontBitmap, documentBackBitmap, subscriber -> }
 ) {
     val navController = rememberNavController()
 
@@ -26,7 +27,7 @@ fun OnboardingSDK(
         }
 
         composable(route = Screen.ProcessingPage.route) {
-            ProcessingPage(navController = navController)
+            ProcessingPage(navController = navController,  onOnboardingCompleted = onOnboardingCompleted)
         }
 
         composable(route = Screen.DocumentChoose.route) {
