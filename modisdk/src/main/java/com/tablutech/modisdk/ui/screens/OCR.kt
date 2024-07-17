@@ -96,7 +96,8 @@ fun OCR(
                 faceBitmap = Constants.faceBitmap!!,
                 percentagem = match.value.toString(),
             ){
-                 onOnboardingCompleted(navController, OCRReader.documentData, Constants.documentProtaitBitmap, Constants.faceBitmap, Constants.documentFrontBitmap, Constants.documentBackBitmap, null)
+                navController?.navigate(Screen.EndPage.route)
+                //onOnboardingCompleted(navController, OCRReader.documentData, Constants.documentProtaitBitmap, Constants.faceBitmap, Constants.documentFrontBitmap, Constants.documentBackBitmap, null)
             }
         }
 

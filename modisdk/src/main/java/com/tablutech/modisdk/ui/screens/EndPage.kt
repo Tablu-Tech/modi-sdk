@@ -50,6 +50,7 @@ fun EndPage(navController: NavController? = null, onImageCaptured: (Bitmap) -> U
                 horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(text = "Continua....", fontSize = 30.sp)
 
+                if(Constants.subscritor!=null){
                 Image(bitmap =  Constants.faceBitmap!!.asImageBitmap(), contentDescription = null , modifier = Modifier.size(300.dp))
                 Row {
                     Text(text = "first name : ", fontSize = 12.sp)
@@ -69,6 +70,18 @@ fun EndPage(navController: NavController? = null, onImageCaptured: (Bitmap) -> U
                 Row {
                     Text(text = "birth day : ", fontSize = 12.sp)
                     Text(text = Constants.subscritor?.personalData?.birth_date+"", fontSize = 14.sp)
+                }
+                }else{
+                    Row {
+                        Image(bitmap =  Constants.faceBitmap!!.asImageBitmap(), contentDescription = null , modifier = Modifier.size(300.dp))
+                        Image(bitmap =  Constants.documentProtaitBitmap!!.asImageBitmap(), contentDescription = null , modifier = Modifier.size(300.dp))
+                    }
+
+                    Row{
+                        Image(bitmap =  Constants.documentFrontBitmap!!.asImageBitmap(), contentDescription = null , modifier = Modifier.size(300.dp))
+                        Image(bitmap =  Constants.documentBackBitmap!!.asImageBitmap(), contentDescription = null , modifier = Modifier.size(300.dp))
+                    }
+
                 }
             }
         }

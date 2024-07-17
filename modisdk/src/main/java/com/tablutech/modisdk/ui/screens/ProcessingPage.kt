@@ -122,7 +122,8 @@ fun ProcessingPage (navController: NavController? = null, onImageCaptured: (Bitm
 
                     if(subscritor!=null){
                         Constants.subscritor = subscritor
-                        onOnboardingCompleted(navController, OCRReader.documentData, Constants.documentProtaitBitmap, Constants.faceBitmap, Constants.documentFrontBitmap, Constants.documentBackBitmap, subscritor)
+                        navController.navigate(Screen.EndPage.route)
+                        //onOnboardingCompleted(navController, OCRReader.documentData, Constants.documentProtaitBitmap, Constants.faceBitmap, Constants.documentFrontBitmap, Constants.documentBackBitmap, subscritor)
                     }else{
                         navController.navigate(Screen.DocumentChoose.route)
                     }
