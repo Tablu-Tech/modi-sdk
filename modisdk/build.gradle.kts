@@ -109,7 +109,7 @@ afterEvaluate {
 
                 groupId = "com.github.inaciosacataria"
                 artifactId = "biometrylibrary"
-                version = "1.2.1"
+                version = "1.2.2"
             }
         }
     }
