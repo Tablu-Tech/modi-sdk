@@ -256,8 +256,6 @@ fun handleCapturedImage(bitmap: Bitmap) {
 
 Os métodos passive e active fornecem formas flexíveis de detectar a prova de vida no MoDI SDK. Use o método que se adequa ao seu fluxo de autenticação e personalizar a experiência do usuário conforme necessário.
 
-
-\
 ## Verificação de Documentos
 
 ## Descrição
