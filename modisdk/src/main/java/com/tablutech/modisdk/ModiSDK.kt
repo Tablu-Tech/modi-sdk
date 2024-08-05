@@ -10,6 +10,7 @@ import com.regula.documentreader.api.params.DocReaderConfig
 import com.regula.facesdk.FaceSDK
 import com.regula.facesdk.configuration.InitializationConfiguration
 import com.regula.facesdk.exception.InitException
+import com.tablutech.modisdk.utils.Constants.TAGMODI
 
 object ModiSDK {
 
@@ -24,11 +25,11 @@ object ModiSDK {
         DocumentReader.Instance()
             .prepareDatabase(context, "Full", object : IDocumentReaderPrepareCompletion {
                 override fun onPrepareCompleted(p0: Boolean, p1: DocumentReaderException?) {
-                    Log.d("REGULA", "Database prepared : $p0")
+                    Log.d(TAGMODI, "MoDi Document Reader Database is prepared : $p0")
                 }
 
                 override fun onPrepareProgressChanged(progress: Int) {
-                    Log.d("REGULA", "Database preparing: $progress")
+                    Log.d(TAGMODI, "MoDi Document Reader Database is preparing: $progress")
                 }
             })
 
@@ -45,16 +46,16 @@ object ModiSDK {
                 ).show()
                 return@initialize
             }
-            Log.d("MainActivity", "FaceSDK init completed successfully")
+            Log.d(TAGMODI, "MoDi FaceSDK init completed successfully")
         }
 
         DocumentReader.Instance().initializeReader(
             context, DocReaderConfig(license)
         ) { success, error_initializeReader ->
             if (success) {
-                Log.d("REGULA", "Database initialization was successful")
+                Log.d(TAGMODI, "MoDI Database initialization was successful")
             } else {
-                Log.d("REGULAREGULA", "initialization was ${error_initializeReader!!.message}")
+                Log.d(TAGMODI, "MoDI initialization was ${error_initializeReader!!.message}")
             }
         }
     }

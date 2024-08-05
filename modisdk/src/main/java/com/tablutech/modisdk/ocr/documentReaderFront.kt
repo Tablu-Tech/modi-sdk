@@ -12,6 +12,7 @@ import com.regula.documentreader.api.enums.Scenario
 import com.regula.documentreader.api.enums.eGraphicFieldType
 import com.tablutech.modisdk.R
 import com.tablutech.modisdk.utils.Constants
+import com.tablutech.modisdk.utils.Constants.TAGMODI
 
 
 object OCRReader {
@@ -27,7 +28,7 @@ object OCRReader {
 
         document.checkDatabaseUpdate(context, "Full") {
             it?.let {
-                Log.d("DatabaseUpdate", "Date: " + it.date)
+                Log.d(TAGMODI, "Checking MoDi DatabaseUpdate: " + it.date)
             }
         }
 
@@ -55,7 +56,7 @@ object OCRReader {
                        documentData.entries.joinToString { "${it.key}: ${it.value}" }
 
                     documentData.entries.forEach { entry ->
-                        Log.d("Resultado", "Field : ${entry.key.toUpperCase()} :,  ${entry.value}")
+                        Log.d(TAGMODI, "Field : ${entry.key.toUpperCase()} :,  ${entry.value}")
                     }
                     Constants.documentFrontBitmap = results!!.getGraphicFieldImageByType(eGraphicFieldType.GF_DOCUMENT_IMAGE)
                     onResult(results!!.getGraphicFieldImageByType(eGraphicFieldType.GF_PORTRAIT)!!)
@@ -72,7 +73,7 @@ object OCRReader {
 
         document.checkDatabaseUpdate(context, "Full") {
             it?.let {
-                Log.d("DatabaseUpdate", "Date: " + it.date)
+                Log.d(TAGMODI, "Checking MoDi DatabaseUpdate: " + it.date)
             }
         }
 
@@ -96,7 +97,7 @@ object OCRReader {
                 }
                 val allInfo = documentData.entries.joinToString { "${it.key}: ${it.value}" }
                 documentData.entries.forEach { entry ->
-                    Log.d("Resultado", "Field : ${entry.key} :  ${entry.value}")
+                    Log.d(TAGMODI, "Field : ${entry.key} :  ${entry.value}")
                 }
                 Constants.documentBackBitmap = results!!.getGraphicFieldImageByType(eGraphicFieldType.GF_DOCUMENT_IMAGE)
                 onResult(results!!.getGraphicFieldImageByType(eGraphicFieldType.GF_DOCUMENT_IMAGE)!!)

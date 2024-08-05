@@ -12,4 +12,5 @@ object Constants {
     var token = "$2y$10"+"$"+"q6P7XwLxQk2QWlFg.b5Z4OvjGLQ9VjwE3cB8kXsEg6O1Bw6o"
     var faceBitmap : Bitmap? = null
     var subscritor : Subscritor? = null
+    var TAGMODI : String = "MODISDK"
 }

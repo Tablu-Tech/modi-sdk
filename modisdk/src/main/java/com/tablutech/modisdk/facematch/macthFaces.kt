@@ -12,6 +12,7 @@ import com.regula.facesdk.model.MatchFacesImage
 import com.regula.facesdk.model.results.matchfaces.MatchFacesResponse
 import com.regula.facesdk.model.results.matchfaces.MatchFacesSimilarityThresholdSplit
 import com.regula.facesdk.request.MatchFacesRequest
+import com.tablutech.modisdk.utils.Constants.TAGMODI
 
 object FaceMacth {
     fun matchFaces(first: Bitmap, second: Bitmap, onResult: (Double) -> Unit) {
@@ -35,12 +36,12 @@ object FaceMacth {
                 null
             }
 
-            Log.d("Similarity", "Similarity: $similarity")
+            Log.d(TAGMODI, "Similarity: $similarity")
 
 
             val formattedOutput = String.format("%.2f", similarity!! * 100)
             val percentageDouble = formattedOutput.toDouble()
-            Log.d("Similarity", "Similarity: $percentageDouble %")
+            Log.d(TAGMODI, "Similarity: $percentageDouble %")
             onResult(percentageDouble)
         }
     }

@@ -36,6 +36,7 @@ import com.tablutech.modisdk.ui.components.ProcessingDialog
 import com.tablutech.modisdk.ui.components.TopAppBarCustom
 import com.tablutech.modisdk.ui.components.ValidationDialog
 import com.tablutech.modisdk.utils.Constants
+import com.tablutech.modisdk.utils.Constants.TAGMODI
 
 @Preview
 @Composable
@@ -72,17 +73,16 @@ fun OCR(
                             matchFaces(Constants.faceBitmap!!, Constants.documentProtaitBitmap!!) {
                                 match.value = it
                                 if (it >= Constants.similarity) {
-                                    Log.d("SIMILARITY", "GOOD: ${match.value}")
+                                    Log.d(TAGMODI, "Similarity GOOD: ${match.value}")
                                     dialogState.value = true
                                 } else {
                                     dialogState.value = true
                                 }
                             } else {
-                            Log.d("SIMILARITY", "Else: ${match.value}")
+                            Log.d(TAGMODI, "Similarity Else: ${match.value}")
                         }
                     } else {
-                        Log.d(
-                            "SIMILARITY",
+                        Log.d(TAGMODI,
                             "Else: verifiedDocumentFront: ${verifiedDocumentFront.value} && verifiedDocumentBack :${verifiedDocumentBack.value}"
                         )
                     }
@@ -163,7 +163,7 @@ fun OCR(
 
 
                         if (imageCaptured.value != null) {
-                            Log.d("IMAGEG", "Step2: ${imageCaptured.value}")
+                            Log.d(TAGMODI, "Step2: ${imageCaptured.value}")
                         }
                     }
                 }

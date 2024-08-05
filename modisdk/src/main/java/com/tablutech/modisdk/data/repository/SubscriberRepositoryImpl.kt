@@ -10,6 +10,7 @@ import com.tablutech.modi_agentapp.data.remote.SubscriberApiService
 import com.tablutech.modisdk.data.model.Subscritor
 
 import com.tablutech.modisdk.utils.Constants
+import com.tablutech.modisdk.utils.Constants.TAGMODI
 import com.tablutech.modisdk.utils.Helpers.bitmapToTempFile
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -49,7 +50,7 @@ class SubscriberRepositoryImpl() {
 
 
 
-        Log.d("APIResponse", "Entrou no metodo pesquisar face")
+        Log.d(TAGMODI, "MoDi searching for subscriber")
 
 
         val file1 = bitmapToTempFile(context, selfie)
@@ -74,7 +75,7 @@ class SubscriberRepositoryImpl() {
                         val responseBody = response.body?.string()
                         val subscriberResponse =
                             Gson().fromJson(responseBody, Subscritor::class.java)
-                        Log.d("APIResponse", "Response: $subscriberResponse")
+                        Log.d(TAGMODI, "Response: $subscriberResponse")
                         Response.success(subscriberResponse)
                     } else {
                         Log.e("APIResponse", "Error response code: ${response.code}")
