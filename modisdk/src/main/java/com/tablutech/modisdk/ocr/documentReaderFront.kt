@@ -100,7 +100,7 @@ object OCRReader {
                     Log.d(TAGMODI, "Field : ${entry.key} :  ${entry.value}")
                 }
                 Constants.documentBackBitmap = results!!.getGraphicFieldImageByType(eGraphicFieldType.GF_DOCUMENT_IMAGE)
-                onResult(results!!.getGraphicFieldImageByType(eGraphicFieldType.GF_DOCUMENT_IMAGE)!!)
+                onResult(results.getGraphicFieldImageByType(eGraphicFieldType.GF_DOCUMENT_IMAGE)!!)
             }
         }
         return documentData;

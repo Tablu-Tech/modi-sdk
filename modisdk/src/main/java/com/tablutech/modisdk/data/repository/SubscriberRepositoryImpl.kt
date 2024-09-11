@@ -56,10 +56,10 @@ class SubscriberRepositoryImpl() {
         val file1 = bitmapToTempFile(context, selfie)
         val requestBody1 = RequestBody.create("image/*".toMediaTypeOrNull(), file1)
         val part1 = MultipartBody.Part.createFormData("face_picture", "face_picture.jpg", requestBody1)
-        requestBodyBuilder!!.addPart(part1)
+        requestBodyBuilder.addPart(part1)
 
 
-        val requestBody: RequestBody = requestBodyBuilder!!.build()
+        val requestBody: RequestBody = requestBodyBuilder.build()
 
         val request: Request = Request.Builder()
             .url(apiUrl)

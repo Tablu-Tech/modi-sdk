@@ -92,7 +92,7 @@ fun ProcessingPage (navController: NavController? = null, onImageCaptured: (Bitm
                 {
                     CircularProgressIndicator(modifier = Modifier.size(20.dp), color = GreenModi)
                     Spacer(modifier = Modifier.width(12.dp))
-                    Text(text = "Pesquisando utilizador")
+                    Text(text = "Pesquisando trabalhador")
                 }
 
 
@@ -122,8 +122,8 @@ fun ProcessingPage (navController: NavController? = null, onImageCaptured: (Bitm
 
                     if(subscritor!=null){
                         Constants.subscritor = subscritor
-                        navController.navigate(Screen.DocumentChoose.route)
-                       // onOnboardingCompleted(navController, OCRReader.documentData, Constants.documentProtaitBitmap, Constants.faceBitmap, Constants.documentFrontBitmap, Constants.documentBackBitmap, subscritor)
+                       // navController.navigate(Screen.DocumentChoose.route)
+                        onOnboardingCompleted(navController, OCRReader.documentData, Constants.documentProtaitBitmap, Constants.faceBitmap, Constants.documentFrontBitmap, Constants.documentBackBitmap, subscritor)
                     }else{
                         navController.navigate(Screen.DocumentChoose.route)
                     }

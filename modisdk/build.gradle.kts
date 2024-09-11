@@ -88,9 +88,11 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.material3.android)
+    implementation(libs.androidx.foundation.android)
+   // implementation(libs.androidx.material3.android)
+    //   implementation(libs.androidx.material3.android)
     //  implementation(libs.firebase.analytics)
     //implementation(libs.androidx.navigation.compose)
     testImplementation(libs.junit)
@@ -110,7 +112,7 @@ afterEvaluate {
 
                 groupId = "com.github.inaciosacataria"
                 artifactId = "biometrylibrary"
-                version = "1.2.3"
+                version = "1.2.4"
             }
         }
     }

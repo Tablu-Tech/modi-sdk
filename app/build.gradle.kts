@@ -5,6 +5,10 @@ plugins {
 
 android {
 
+    packagingOptions {
+        exclude ("META-INF/androidx.compose.material3_material3.version")
+    }
+
     androidResources {
         noCompress += "Regula/faceSdkResource.dat"
     }

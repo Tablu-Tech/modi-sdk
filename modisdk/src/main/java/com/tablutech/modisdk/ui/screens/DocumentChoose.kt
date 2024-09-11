@@ -134,6 +134,7 @@ fun DocumentChoose(navController: NavController? = null, onImageCaptured: (Bitma
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Start
                     ) {
+
                         RadioButton(
                             selected = selectedDocumentOption.value == "Passaporte",
                             onClick = {
@@ -144,8 +145,6 @@ fun DocumentChoose(navController: NavController? = null, onImageCaptured: (Bitma
 
                         Text(text = "Passaporte")
                     };
-
-
                 }
             }
         }
