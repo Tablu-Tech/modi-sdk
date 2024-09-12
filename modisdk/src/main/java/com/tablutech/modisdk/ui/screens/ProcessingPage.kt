@@ -69,9 +69,11 @@ fun ProcessingPage (navController: NavController? = null, onImageCaptured: (Bitm
             Column (modifier = Modifier
                 .align(Alignment.TopCenter)
                 .offset(y = (0.30f * 400.dp)),
-                verticalArrangement = Arrangement.Center,
+                verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally)
             {
+                Image(painter = painterResource(id = R.drawable.logo_paga), contentDescription = null, modifier = Modifier.size(100.dp))
+                Spacer(modifier = Modifier.height(32.dp))
                 Row(modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 34.dp, end = 34.dp),
