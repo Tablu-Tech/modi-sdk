@@ -98,19 +98,19 @@ fun ProcessingPage (navController: NavController? = null, onImageCaptured: (Bitm
                 }
 
 
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 70.dp, start = 34.dp, end = 34.dp),
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically)
-                {
-                    CircularProgressIndicator(color = GreenModi)
-                }
+//                Row(modifier = Modifier
+//                    .fillMaxWidth()
+//                    .padding(top = 70.dp, start = 34.dp, end = 34.dp),
+//                    horizontalArrangement = Arrangement.Center,
+//                    verticalAlignment = Alignment.CenterVertically)
+//                {
+//                    CircularProgressIndicator(color = GreenModi)
+//                }
 
 
                 Row(modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 70.dp, start = 34.dp, end = 34.dp),
+                    .padding(top = 50.dp, start = 34.dp, end = 34.dp),
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically)
                 {

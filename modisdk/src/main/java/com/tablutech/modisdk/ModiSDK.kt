@@ -49,6 +49,7 @@ object ModiSDK {
             Log.d(TAGMODI, "MoDi FaceSDK init completed successfully")
         }
 
+
         DocumentReader.Instance().initializeReader(
             context, DocReaderConfig(license)
         ) { success, error_initializeReader ->

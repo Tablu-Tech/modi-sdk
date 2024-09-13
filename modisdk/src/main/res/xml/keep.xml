@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@raw/ml_face_isface,
+    @raw/ml_face_mnet,
+    @raw/ml_face_landmark,
+    @raw/ml_face_contour"
+    tools:shrinkMode="strict" />
