@@ -13,6 +13,7 @@ import com.tablutech.modisdk.ui.screens.OCR
 
 import com.tablutech.modisdk.ui.screens.Onboarding
 import com.tablutech.modisdk.ui.screens.ProcessingPage
+import com.tablutech.modisdk.ui.screens.ProcessingPageScreen
 import com.tablutech.modisdk.ui.screens.Screen
 
 @Composable
@@ -30,11 +31,15 @@ fun OnboardingSDK(
             ProcessingPage(navController = navController,  onOnboardingCompleted = onOnboardingCompleted)
         }
 
+        composable(route = Screen.ProcessingPageScreen.route) {
+            ProcessingPageScreen(navController = navController, onOnboardingCompleted = onOnboardingCompleted)
+        }
+
         composable(route = Screen.DocumentChoose.route) {
             DocumentChoose(navController = navController)
         }
         composable(route = Screen.OCR.route) {
-            OCR(navController = navController, onOnboardingCompleted = onOnboardingCompleted)
+            OCR(navController = navController, )
         }
 
         composable(route = Screen.EndPage.route) {

@@ -42,9 +42,6 @@ import com.tablutech.modisdk.utils.Constants.TAGMODI
 @Composable
 fun OCR(
     navController: NavController? = null,
-    onOnboardingCompleted: (navController: NavController?, documentData: MutableMap<String, String>?, protaitBitmap: Bitmap?, faceBitmap: Bitmap?, documentFrontBitmap: Bitmap?, documentBackBitmap: Bitmap?, subscriber : Subscritor? ) -> Unit = {
-        navController, documentData, protaitBitmap, faceBitmap, documentFrontBitmap, documentBackBitmap, subscriber ->
-    },
     onImageCaptured: (Bitmap) -> Unit = {}
 ) {
 
@@ -52,11 +49,7 @@ fun OCR(
     val verifiedDocumentFront = rememberSaveable { mutableStateOf(false) }
     val verifiedDocumentBack = rememberSaveable { mutableStateOf(false) }
 
-    val imageCaptured = rememberSaveable { mutableStateOf<Bitmap?>(null) }
-    var handler = Handler()
-    var match = rememberSaveable { mutableStateOf(0.0) }
-    var dialogState = rememberSaveable { mutableStateOf(false) }
-    val isProcessing = false
+
 
 
     Scaffold(
@@ -68,19 +61,7 @@ fun OCR(
                 },
                 navigation = {
                     if ((verifiedDocumentFront.value && verifiedDocumentBack.value) || (verifiedDocumentFront.value && !documentTypeID.equals("Bilhete de identidade",true))) {
-
-                        if (Constants.faceBitmap != null && Constants.documentProtaitBitmap != null)
-                            matchFaces(Constants.faceBitmap!!, Constants.documentProtaitBitmap!!) {
-                                match.value = it
-                                if (it >= Constants.similarity) {
-                                    Log.d(TAGMODI, "Similarity GOOD: ${match.value}")
-                                    dialogState.value = true
-                                } else {
-                                    dialogState.value = true
-                                }
-                            } else {
-                            Log.d(TAGMODI, "Similarity Else: ${match.value}")
-                        }
+                        navController!!.navigate(Screen.ProcessingPageScreen.route)
                     } else {
                         Log.d(TAGMODI,
                             "Else: verifiedDocumentFront: ${verifiedDocumentFront.value} && verifiedDocumentBack :${verifiedDocumentBack.value}"
@@ -90,15 +71,7 @@ fun OCR(
             )
         }) { innerPadding ->
 
-        if (dialogState.value == true && match.value > 0.000000000000000000000000000) {
-            ValidationDialog(
-                documentProtatitBitmap = Constants.documentProtaitBitmap!!,
-                faceBitmap = Constants.faceBitmap!!,
-                percentagem = match.value.toString(),
-            ){
-                 onOnboardingCompleted(navController, OCRReader.documentData, Constants.documentProtaitBitmap, Constants.faceBitmap, Constants.documentFrontBitmap, Constants.documentBackBitmap, null)
-            }
-        }
+
 
         Box(
             modifier = Modifier
@@ -159,16 +132,9 @@ fun OCR(
                                     }
                                 }
                         }
-
-
-
-                        if (imageCaptured.value != null) {
-                            Log.d(TAGMODI, "Step2: ${imageCaptured.value}")
-                        }
                     }
                 }
             }
         }
-        ProcessingDialog(showDialog = isProcessing)
     }
 }
