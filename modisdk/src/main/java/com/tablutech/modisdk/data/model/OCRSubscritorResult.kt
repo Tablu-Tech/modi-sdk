@@ -1,5 +1,10 @@
 package com.tablutech.modisdk.data.model
 
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+
 class OCRSubscritorResult(var entries: Map<String, String>) {
     var name: String
     var firstName: String
@@ -76,5 +81,68 @@ class OCRSubscritorResult(var entries: Map<String, String>) {
         bornProvinceId = entries["PLACE OF BIRTH"] ?: ""
         gender = if (entries["Gender"] == "M") 1 else 2
         bornCountryId = entries["Place Of Birth"] ?: ""
+    }
+}
+
+
+val translationMap = mapOf(
+
+    "Date of birth" to "Data de nascimento",
+    "Place of birth" to "Local de nascimento",
+    "Personal number" to "Número do documento",
+    "Sex" to "Sexo",
+    "Address" to "Endereço",
+    "Surname and given names" to "Sobrenome e nomes",
+    "Issuing state" to "Estado emissor",
+    "Age" to "Idade",
+    "Date of expiry" to "Data de validade",
+    "Date of issue" to "Data de emissão",
+    "Surname" to "Sobrenome",
+    "Given name" to "Nome",
+    "Mother's name" to "Nome da mãe",
+    "Nationality" to "Nacionalidade",
+    "Nationality code" to "Código de nacionalidade",
+    "Optional data" to "Dados opcionais",
+    "Place of issue" to "Local de emissão",
+    "Father's name" to "Nome do pai",
+    "Marital status" to "Estado civil",
+)
+
+
+fun translateKey(key: String): String {
+    return translationMap[key] ?: key
+}
+
+val fieldsToRemove = listOf(
+    "MRZ lines",
+    "Check digit for document number" ,
+    "Check digit for date of birth" ,
+    "Check digit for date of expiry" ,
+    "Final check digit",
+    "Months to expire",
+    "Years since issue",
+    "MRZ Type",
+    "Issuing state code" ,
+    "Height",
+    "Document number",
+)
+
+fun joinPersonalNames(names : String? = "" , surname : String ? = "") : String {
+    return names +" "+surname
+}
+
+fun formatBornDate(dateString: String?): String {
+    if (dateString.isNullOrEmpty()) {
+        return "Data inválida"
+    }
+
+    val originalFormat = SimpleDateFormat("M/d/yy", Locale.ENGLISH)
+    val targetFormat = SimpleDateFormat("dd/MM/yyyy", Locale("pt", "BR"))
+
+    return try {
+        val date: Date = originalFormat.parse(dateString) ?: return "Data inválida"
+        targetFormat.format(date)
+    } catch (e: ParseException) {
+        "Formato de data inválido"
     }
 }
