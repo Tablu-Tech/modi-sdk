@@ -91,23 +91,23 @@ fun DocumentChoose(navController: NavController? = null, onImageCaptured: (Bitma
                         Text(text = "Bilhete de identidade")
                     };
 
-                    Row(
-                        modifier = Modifier
-                            .height(44.dp)
-                            .fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Start
-                    ) {
-                        RadioButton(
-                            selected = selectedDocumentOption.value == "Carta de condução",
-                            onClick = {
-                                selectedDocumentOption.value = "Carta de condução"
-                                Constants.documentTypeID = "Carta de condução"
-                            },
-                        )
-
-                        Text(text = "Carta de condução")
-                    };
+//                    Row(
+//                        modifier = Modifier
+//                            .height(44.dp)
+//                            .fillMaxWidth(),
+//                        verticalAlignment = Alignment.CenterVertically,
+//                        horizontalArrangement = Arrangement.Start
+//                    ) {
+//                        RadioButton(
+//                            selected = selectedDocumentOption.value == "Carta de condução",
+//                            onClick = {
+//                                selectedDocumentOption.value = "Carta de condução"
+//                                Constants.documentTypeID = "Carta de condução"
+//                            },
+//                        )
+//
+//                        Text(text = "Carta de condução")
+//                    };
 
                     Row(
                         modifier = Modifier
@@ -127,24 +127,24 @@ fun DocumentChoose(navController: NavController? = null, onImageCaptured: (Bitma
                         Text(text = "Cartão de eleitor")
                     };
 
-                    Row(
-                        modifier = Modifier
-                            .height(44.dp)
-                            .fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Start
-                    ) {
-
-                        RadioButton(
-                            selected = selectedDocumentOption.value == "Passaporte",
-                            onClick = {
-                                selectedDocumentOption.value = "Passaporte"
-                                Constants.documentTypeID = "Passaporte"
-                            },
-                        )
-
-                        Text(text = "Passaporte")
-                    };
+//                    Row(
+//                        modifier = Modifier
+//                            .height(44.dp)
+//                            .fillMaxWidth(),
+//                        verticalAlignment = Alignment.CenterVertically,
+//                        horizontalArrangement = Arrangement.Start
+//                    ) {
+//
+//                        RadioButton(
+//                            selected = selectedDocumentOption.value == "Passaporte",
+//                            onClick = {
+//                                selectedDocumentOption.value = "Passaporte"
+//                                Constants.documentTypeID = "Passaporte"
+//                            },
+//                        )
+//
+//                        Text(text = "Passaporte")
+//                    };
                 }
             }
         }
